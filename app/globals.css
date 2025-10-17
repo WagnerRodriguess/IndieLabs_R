@@ -4,12 +4,94 @@
 @tailwind utilities;
 
 body {
-  background-color:#301341;
-  color: #F6F6F6;
+  color: #ffffff;
   margin: 0;
+}
+
+header{
+
+  background-color:#301341;
+  
 }
 
 footer{
   background-color: #21022E;
 
+}
+
+/* Altera a cor dos botões de navegação (setas) para branco */
+.hero-carousel .swiper-button-next,
+.hero-carousel .swiper-button-prev {
+  color: #fff;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+/* Faz as setas ficarem 100% visíveis ao passar o rato por cima */
+.hero-carousel .swiper-button-next:hover,
+.hero-carousel .swiper-button-prev:hover {
+  opacity: 1;
+}
+
+/* Remove o fundo cinza padrão das setas */
+.hero-carousel .swiper-button-next::after,
+.hero-carousel .swiper-button-prev::after {
+  font-size: 2rem !important; /* Tamanho das setas */
+}
+
+/* Altera a cor das bolinhas da paginação */
+.hero-carousel .swiper-pagination-bullet {
+  background-color: rgba(255, 255, 255, 0.5); /* Cor da bolinha inativa */
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+}
+
+/* Cor da bolinha ativa */
+.hero-carousel .swiper-pagination-bullet-active {
+  background-color: #fff;
+}
+
+.hero-carousel a,
+.hero-carousel a:visited,
+.hero-carousel a:active {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+#hero-text-container {
+  padding-left: 64px;
+}
+
+#game-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra em telemóvel */
+  gap: 2rem; /* 32px (gap-8) */
+}
+
+#game-text-column {
+  max-width: 448px; /* max-w-md */
+}
+
+/* Em ecrãs médios (768px) ou maiores, vira 2 colunas */
+@media (min-width: 768px) {
+  #game-page-container {
+    flex-direction: row; /* Vira 2 colunas */
+    align-items: flex-start; /* Alinha ao topo */
+    gap: 2rem; /* gap-8 */
+  }
+}
+
+#game-video-container {
+  height: 0;
+  padding-bottom: 56.25%;
+}
+
+#game-media-column {
+  gap: 2rem; 
+}
+
+#game-image-row {
+  gap: 1.5rem; 
 }

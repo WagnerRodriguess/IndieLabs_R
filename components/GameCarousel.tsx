@@ -1,4 +1,6 @@
-'use client'; // Necessário para usar hooks do Swiper
+// components/GameCarousel.tsx (Com efeito de Brilho)
+
+'use client'; 
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
@@ -21,27 +23,35 @@ const games = [
 
 const GameCarousel = () => {
   return (
-    <section className="mt-12 mb-48 max-w-[1000px] mx-auto bg-lime-500">
+    <section className="mt-12 mb-48 max-w-[1440px] mx-auto">
       <h2 className="text-3xl font-bold mb-4">Recomendado para você</h2>
       <Swiper
         modules={[Pagination]}
         spaceBetween={24}
-        slidesPerView={5} // Mostra 5 slides por vez
+        slidesPerView={5}
         pagination={{ clickable: true }}
-        className="!pb-10" // Adiciona espaço para a paginação
+        className="!pb-10"
       >
         {games.map((game) => (
           <SwiperSlide key={game.slug}>
             <Link href={`/games/${game.slug}`}>
-              <div className="rounded-lg overflow-hidden group">
+              
+              
+              <div className="
+                w-48 h-64 mx-auto rounded-lg overflow-hidden group
+                transition-shadow duration-300
+                group-hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]
+              ">
                 <Image
                   src={game.imgSrc}
                   alt={game.alt}
-                  width={250}
-                  height={350}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  width={200}
+                  height={280}
+                  
+                  className="w-full h-full object-cover"
                 />
               </div>
+
             </Link>
           </SwiperSlide>
         ))}

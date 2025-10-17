@@ -1,74 +1,93 @@
+// app/games/[slug]/page.tsx (Com ID para a Fila de Imagens)
+
+import { gamesData } from '../../../lib/gamedata';
 import Image from 'next/image';
-import { notFound } from 'next/navigation';
 
-// Dados dos jogos (em um projeto real, isso viria de um banco de dados ou API)
-const gameData: { [key: string]: any } = {
-  undertale: {
-    titleImg: '/assets/tituloundertale.png',
-    characterImg: '/assets/asriel.png',
-    gallery: [
-      '/assets/Undertale01 1.png',
-      '/assets/Undertale_07-12-18 1.png',
-      '/assets/NSwitchDS_Undertale_05 1.png',
-      '/assets/15_ma_pj_jeu_video 1.png',
-    ],
-    synopsis: `“Undertale” é um jogo de RPG desenvolvido por Toby Fox que se destaca por sua narrativa inovadora...`,
-    releaseDate: '15 de setembro de 2015',
-    developer: 'Toby Fox',
-  },
-  celeste: {
-    titleImg: '/assets/tituloceleste.png',
-    characterImg: '/assets/Celeste_character_Madeline_with_strawberry 1.png',
-    gallery: [
-        '/assets/5 1.png', 
-        '/assets/4 1.png',
-        '/assets/6 1.png',
-        '/assets/7 2.png'
-    ],
-    synopsis: `"Celeste" é um jogo indie lançado em 2018 que rapidamente conquistou a atenção...`,
-    releaseDate: '25 jan, 2018',
-    developer: 'Maddy Makes Games Inc.',
-  },
-  hollowknight: {
-      // Adicione os dados do hollowknight.html aqui
-  }
-  // Adicione os outros jogos aqui...
-};
+export async function generateStaticParams() {
+  return gamesData.map((game) => ({
+    slug: game.slug,
+  }));
+}
 
-export default function GameDetailPage({ params }: { params: { slug: string } }) {
-  const game = gameData[params.slug];
+export default function GamePage({ params }: { params: { slug: string } }) {
+  const game = gamesData.find((g) => g.slug === params.slug);
 
+  // Bloco 'if' preenchido para evitar o erro ts(18048)
   if (!game) {
-    notFound(); // Se o jogo não for encontrado, mostra uma página 404
+    return (
+      <main className="max-w-6xl mx-auto px-4 py-12 text-center">
+        <h1 className="text-4xl font-bold">Jogo não encontrado</h1>
+      </main>
+    );
   }
 
   return (
-    <div className="max-w-7xl mx-auto mt-12 px-4">
-      <div className="grid grid-cols-12 gap-8">
+    <div
+      className="flex flex-col min-h-screen bg-cover bg-center"
+      style={{ backgroundImage: `url(${game.backgroundImage})` }}
+    >
+      {/* Título Central */}
+      <div className="flex flex-col items-center text-center px-4 pt-10">
+        <h1 className="text-black text-4xl md:text-6xl font-bold drop-shadow-lg mb-6">
+          {game.title}
+        </h1>
+      </div>
+
+      {/* Container principal com ID para o CSS */}
+      <div id="game-page-container" className="flex justify-center px-4 mb-12">
         
-        {/* Galeria de Imagens (à esquerda) */}
-        <div className="col-span-3 flex flex-col gap-4">
-          {game.gallery.map((img: string, index: number) => (
-            <Image key={index} src={img} alt={`${params.slug} screenshot ${index + 1}`} width={300} height={180} className="rounded-md" />
+        {/* Coluna da Esquerda com ID */}
+        <div id="game-media-column" className="flex flex-col">
+          
+          {/* ======================================= */}
+          {/* MUDANÇA (Adicionámos este ID)          */}
+          {/* ======================================= */}
+          <div id="game-image-row" className="flex">
+            {game.images.slice(0, 3).map((img, index) => (
+              <div 
+                key={index} 
+                className="
+                  bg-white rounded-lg shadow-lg p-2 w-52 h-52
+                  flex items-center justify-center 
+                "
+              >
+                <img
+                  src={img} 
+                  alt={`${game.title} screenshot ${index + 1}`}
+                  className="rounded-md object-cover w-full h-full"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Vídeo (Com ID e classes 'relative'/'absolute' para o globals.css) */}
+          <div 
+            id="game-video-container" 
+            className="
+              border-4 border-white rounded-lg shadow-2xl overflow-hidden 
+              w-full max-w-2xl 
+              relative 
+            "
+          >
+            <iframe
+              className="w-full h-full absolute top-0 left-0" 
+              src={game.videoUrl}
+              title={`Trailer de ${game.title}`}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+
+        {/* Coluna da Direita com ID */}
+        <div id="game-text-column" className="flex flex-col justify-center text-black">
+          {game.description.map((paragraph, index) => (
+            <p key={index} className="mb-4 drop-shadow-md text-justify">
+              {paragraph}
+            </p>
           ))}
         </div>
-
-        {/* Sinopse (ao centro) */}
-        <div className="col-span-6">
-          <Image src={game.titleImg} alt={`${params.slug} title`} width={400} height={100} className="mb-6" />
-          <p className="text-gray-300 leading-relaxed whitespace-pre-line">{game.synopsis}</p>
-          <h2 className="text-xl font-bold mt-8 mb-2">Informações adicionais:</h2>
-          <p className="text-gray-400">
-            <strong>Data de lançamento:</strong> {game.releaseDate}<br/>
-            <strong>Developer:</strong> {game.developer}
-          </p>
-        </div>
-
-        {/* Imagem do Personagem (à direita) */}
-        <div className="col-span-3">
-          <Image src={game.characterImg} alt="Character" width={350} height={500} />
-        </div>
-
       </div>
     </div>
   );
