@@ -12,7 +12,6 @@ export async function generateStaticParams() {
 export default function GamePage({ params }: { params: { slug: string } }) {
   const game = gamesData.find((g) => g.slug === params.slug);
 
-  // Bloco 'if' preenchido para evitar o erro ts(18048)
   if (!game) {
     return (
       <main className="max-w-6xl mx-auto px-4 py-12 text-center">
@@ -26,22 +25,15 @@ export default function GamePage({ params }: { params: { slug: string } }) {
       className="flex flex-col min-h-screen bg-cover bg-center"
       style={{ backgroundImage: `url(${game.backgroundImage})` }}
     >
-      {/* Título Central */}
       <div className="flex flex-col items-center text-center px-4 pt-10">
-        <h1 className="text-black text-4xl md:text-6xl font-bold drop-shadow-lg mb-6">
+        <h1 id="game-page-title" className="text-black text-4xl md:text-6xl font-bold drop-shadow-lg mb-6">
           {game.title}
         </h1>
       </div>
-
-      {/* Container principal com ID para o CSS */}
       <div id="game-page-container" className="flex justify-center px-4 mb-12">
-        
-        {/* Coluna da Esquerda com ID */}
+
         <div id="game-media-column" className="flex flex-col">
           
-          {/* ======================================= */}
-          {/* MUDANÇA (Adicionámos este ID)          */}
-          {/* ======================================= */}
           <div id="game-image-row" className="flex">
             {game.images.slice(0, 3).map((img, index) => (
               <div 

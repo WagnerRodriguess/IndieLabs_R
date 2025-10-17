@@ -1,14 +1,13 @@
+// app/page.tsx (Com flex-grow)
+
 import Hero from '../components/Hero';
 import GameCarousel from '../components/GameCarousel';
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <>
-    <div className="bg-[#301341]">
-
+    <main className="flex-grow">
       <Hero />
       <GameCarousel />
-    </div>
-    </>
+    </main>
   );
 }
