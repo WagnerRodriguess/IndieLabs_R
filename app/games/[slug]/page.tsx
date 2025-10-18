@@ -1,5 +1,3 @@
-// app/games/[slug]/page.tsx (Com ID para a Fila de Imagens)
-
 import { gamesData } from '../../../lib/gamedata';
 import Image from 'next/image';
 

@@ -5,7 +5,6 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Importar os estilos do Swiper
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -74,8 +73,6 @@ const Hero = () => {
                     flex flex-col justify-end
                     h-full
                   ">
-                    
-                    {/* O h2 está limpo, sem classes de cor */}
                     <h2 className="text-4xl font-bold">{game.title}</h2>
                   </div>
                 </div>

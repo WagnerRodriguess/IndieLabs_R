@@ -28,27 +28,23 @@ footer{
   transition: opacity 0.2s;
 }
 
-/* Faz as setas ficarem 100% visíveis ao passar o rato por cima */
 .hero-carousel .swiper-button-next:hover,
 .hero-carousel .swiper-button-prev:hover {
   opacity: 1;
 }
 
-/* Remove o fundo cinza padrão das setas */
 .hero-carousel .swiper-button-next::after,
 .hero-carousel .swiper-button-prev::after {
   font-size: 2rem !important; /* Tamanho das setas */
 }
 
-/* Altera a cor das bolinhas da paginação */
 .hero-carousel .swiper-pagination-bullet {
-  background-color: rgba(255, 255, 255, 0.5); /* Cor da bolinha inativa */
+  background-color: rgba(255, 255, 255, 0.5); 
   width: 10px;
   height: 10px;
   opacity: 1;
 }
 
-/* Cor da bolinha ativa */
 .hero-carousel .swiper-pagination-bullet-active {
   background-color: #fff;
 }
@@ -67,21 +63,20 @@ footer{
 #game-page-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra em telemóvel */
-  gap: 2rem; /* 32px (gap-8) */
+  align-items: center;
+  gap: 2rem;
 }
 
 #game-text-column {
-  max-width: 700px; /* max-w-md */
+  max-width: 700px;
   font-size: 1.5rem;
 }
 
-/* Em ecrãs médios (768px) ou maiores, vira 2 colunas */
 @media (min-width: 768px) {
   #game-page-container {
-    flex-direction: row; /* Vira 2 colunas */
-    align-items: flex-start; /* Alinha ao topo */
-    gap: 2rem; /* gap-8 */
+    flex-direction: row; 
+    align-items: flex-start; 
+    gap: 2rem; 
   }
 }
 

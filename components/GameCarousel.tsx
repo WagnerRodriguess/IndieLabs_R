@@ -1,5 +1,3 @@
-// components/GameCarousel.tsx (Com efeito de Brilho)
-
 'use client'; 
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -7,7 +5,6 @@ import { Pagination } from 'swiper/modules';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Importe os estilos do Swiper
 import 'swiper/css';
 import 'swiper/css/pagination';
 

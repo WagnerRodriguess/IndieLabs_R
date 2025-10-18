@@ -1,5 +1,3 @@
-// app/page.tsx (Com flex-grow)
-
 import Hero from '../components/Hero';
 import GameCarousel from '../components/GameCarousel';
 

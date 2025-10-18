@@ -1,6 +1,3 @@
-// app/layout.tsx (Com lógica para esconder o Footer)
-
-// MUDANÇA 1: Adicionar 'use client' e 'usePathname'
 'use client';
 import { usePathname } from 'next/navigation';
 
