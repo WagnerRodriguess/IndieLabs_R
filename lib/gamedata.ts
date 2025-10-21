@@ -16,26 +16,6 @@ export interface GameData {
 
 export const gamesData: GameData[] = [
   {
-    slug: 'life-is-strange',
-    title: 'LIFE IS STRANGE',
-    backgroundImage: '/assets/lis-background2.jpg',
-    description: [
-      'Life is Strange é um jogo de escolhas, onde acompanhos Max uma garota que muda de cidade para cursar Artes na universidade mais renomada nessa área em ..., e lá em uma situação "estranha" ela reencontra uma velha amiga porém vê ela sendo baleada e talvez pelo seu apelo tão grande para ela sobreviver ela desenvolve o poder de voltar no tempo e seguimos o jogo acompanhando a vida da Max agora com poder de voltar no tempo para conseguir evitar o efeito borboleta que salvar a amiga dela ocasionou!',
-    ],
-    details: { 
-      releaseDate: '30 jan, 2015',
-      developer: 'Dontnod Entertainment',
-      publisher: 'Square Enix',
-      tags: 'Escolhas importam, Aventura, Mistério',
-    },
-    images: [
-      '/assets/lis1.jpg',
-      '/assets/lis2.jpg', 
-      '/assets/lis-background.jpg', 
-    ],
-    videoUrl: 'https://www.youtube.com/embed/mpRhaXfvG_0', 
-  },
-  {
     slug: 'celeste',
     title: 'Celeste',
     backgroundImage: '/assets/celeste_background.png', 
