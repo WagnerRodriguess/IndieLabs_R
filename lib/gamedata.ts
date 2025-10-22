@@ -3,6 +3,7 @@ export interface GameData {
   slug: string;
   title: string;
   backgroundImage: string;
+  cardImage: string;
   description: string[]; 
   details: {
     releaseDate: string;
@@ -18,7 +19,8 @@ export const gamesData: GameData[] = [
   {
     slug: 'celeste',
     title: 'Celeste',
-    backgroundImage: '/assets/celeste_background.png', 
+    backgroundImage: '/assets/celeste_background.png',
+    cardImage: '/assets/celeste.png',
     description: [
       '"Celeste" é um jogo indie lançado em 2018 que rapidamente conquistou a atenção da comunidade de jogadores e críticos. Desenvolvido pela Maddy Makes Games, o jogo é uma obra-prima de plataforma que combina desafio, narrativa emocional e uma trilha sonora cativante para criar uma experiência única.',
       'O enredo de "Celeste" segue a jornada de Madeline, uma jovem mulher que decide escalar a misteriosa montanha Celeste.',
@@ -37,6 +39,7 @@ export const gamesData: GameData[] = [
     slug: 'undertale',
     title: 'Undertale',
     backgroundImage: '/assets/undertale_background.png',
+    cardImage: '/assets/undertale.png',
     description: [
       'Undertale é um RPG eletrônico criado pelo desenvolvedor independente norte-americano Toby Fox. Nele, o jogador pode controlar uma criança humana que caiu em uma caverna no subsolo de uma montanha, uma região grande e isolada sob a superfície da Terra, separada por uma barreira mágica.'
     ],

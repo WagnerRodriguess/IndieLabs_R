@@ -1,24 +1,43 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const router = useRouter(); 
+
+  const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (searchTerm.trim() !== '') {
+        router.push(`/search?q=${searchTerm}`);
+      }
+    }
+  };
+
   return (
-   <header className="py-4 px-14 flex justify-between items-center">
+    <header className="py-4 px-14 flex justify-between items-center">
       <Link href="/">
         <Image src="/assets/Logo__indie.png" alt="IndieLabs Logo" width={120} height={40} />
       </Link>
-      <div className="flex items-center gap-4">
+      
+      <div className="flex items-center">
         <input
+          id="search-bar" 
           type="search"
           placeholder="Pesquisar"
-          className="bg-brand-text text-brand-background rounded-lg h-11 w-72 px-4 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-primary"
+          className="focus:outline-none focus:ring-2 focus:ring-brand-primary"
+          
+          value={searchTerm}
+          onChange={handleSearchInput}
+          onKeyDown={handleKeyDown} 
         />
-        <button className="text-brand-text h-10 px-4 rounded-md hover:bg-brand-primary/20 transition-colors">
-          Entrar
-        </button>
-        <button className="bg-brand-primary text-brand-text h-10 px-4 rounded-md font-semibold hover:bg-opacity-90 transition-colors">
-          Criar conta
-        </button>
       </div>
     </header>
   );

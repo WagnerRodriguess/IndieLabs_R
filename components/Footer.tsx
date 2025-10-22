@@ -14,9 +14,9 @@ const Footer = () => {
     <footer className="border-t border-gray-600 mt-20 py-8 ">
       <div className="max-w-[1106px] mx-auto flex justify-between items-center h-[100px]">
         <div className="flex items-center gap-4">
-          <Image src="/assets/logo.png" alt="IndieLabs Logo" width={100} height={30} />
+          <Image src="/assets/logo.png" alt="IndieLabs Logo" width={120} height={40} />
           <p className="text-sm text-gray-400">
-            Copyright © 2025 Indie Labs | Todos os direitos reservados
+          | Todos os direitos reservados
           </p>
         </div>
         <div className="flex items-center gap-4">
