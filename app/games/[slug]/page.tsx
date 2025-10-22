@@ -20,47 +20,32 @@ export default function GamePage({ params }: { params: { slug: string } }) {
 
   return (
     <div
-      className="flex flex-col min-h-screen bg-cover bg-center"
+      className="flex flex-col flex-grow bg-cover bg-center"
       style={{ backgroundImage: `url(${game.backgroundImage})` }}
     >
       <div className="flex flex-col items-center text-center px-4 pt-10">
-        <h1 id="game-page-title" className="text-black text-4xl md:text-6xl font-bold drop-shadow-lg mb-6">
+        <h1 id="game-page-title">
           {game.title}
         </h1>
       </div>
-      <div id="game-page-container" className="flex justify-center px-4 mb-12">
 
-        <div id="game-media-column" className="flex flex-col">
+      <div id="game-page-container">
+
+        <div id="game-media-column">
           
-          <div id="game-image-row" className="flex">
+          <div id="game-image-row">
             {game.images.slice(0, 3).map((img, index) => (
-              <div 
-                key={index} 
-                className="
-                  bg-white rounded-lg shadow-lg p-2 w-52 h-52
-                  flex items-center justify-center 
-                "
-              >
+              <div key={index}>
                 <img
                   src={img} 
                   alt={`${game.title} screenshot ${index + 1}`}
-                  className="rounded-md object-cover w-full h-full"
                 />
               </div>
             ))}
           </div>
-
-          {/* Vídeo (Com ID e classes 'relative'/'absolute' para o globals.css) */}
-          <div 
-            id="game-video-container" 
-            className="
-              border-4 border-white rounded-lg shadow-2xl overflow-hidden 
-              w-full max-w-2xl 
-              relative 
-            "
-          >
+          
+          <div id="game-video-container">
             <iframe
-              className="w-full h-full absolute top-0 left-0" 
               src={game.videoUrl}
               title={`Trailer de ${game.title}`}
               frameBorder="0"
@@ -69,14 +54,23 @@ export default function GamePage({ params }: { params: { slug: string } }) {
             ></iframe>
           </div>
         </div>
-
-        {/* Coluna da Direita com ID */}
-        <div id="game-text-column" className="flex flex-col justify-center text-black">
+        <div id="game-text-column">
           {game.description.map((paragraph, index) => (
-            <p key={index} className="mb-4 drop-shadow-md text-justify">
+            <p key={index}>
               {paragraph}
             </p>
           ))}
+          
+          <div id="game-details-box">
+            <h3>Informações adicionais:</h3>
+            <ul>
+              <li>📅 Data de lançamento: {game.details.releaseDate}</li>
+              <li>🏢 Desenvolvedora: {game.details.developer}</li>
+              <li>🎮 Editora: {game.details.publisher}</li>
+              <li>🏷️ Marcadores: {game.details.tags}</li>
+            </ul>
+          </div>
+
         </div>
       </div>
     </div>

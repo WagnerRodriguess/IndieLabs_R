@@ -22,8 +22,8 @@ export const gamesData: GameData[] = [
     backgroundImage: '/assets/celeste_background.png',
     cardImage: '/assets/celeste.png',
     description: [
-      '"Celeste" é um jogo indie lançado em 2018 que rapidamente conquistou a atenção da comunidade de jogadores e críticos. Desenvolvido pela Maddy Makes Games, o jogo é uma obra-prima de plataforma que combina desafio, narrativa emocional e uma trilha sonora cativante para criar uma experiência única.',
-      'O enredo de "Celeste" segue a jornada de Madeline, uma jovem mulher que decide escalar a misteriosa montanha Celeste.',
+      'Celeste é um jogo indie lançado em 2018 que rapidamente conquistou a atenção da comunidade de jogadores e críticos. Desenvolvido pela Maddy Makes Games, o jogo é uma obra-prima de plataforma que combina desafio, narrativa emocional e uma trilha sonora cativante para criar uma experiência única.',
+      'O enredo de Celeste segue a jornada de Madeline, uma jovem mulher que decide escalar a misteriosa montanha Celeste.',
     ],
     details: {
       releaseDate: '25 jan, 2018',
