@@ -11,9 +11,9 @@ import 'swiper/css/pagination';
 const games = [
   { slug: 'celeste', imgSrc: '/assets/celeste.png', alt: 'Celeste' },
   { slug: 'lifeisstrange', imgSrc: '/assets/lis-caurosel.png', alt: 'Life is Strange' },
-  { slug: 'stardew-valley', imgSrc: '/assets/stardew.png', alt: 'Stardew Valley' },
+  { slug: 'katanazero', imgSrc: '/assets/kz-caurosel.png', alt: 'Katana Zero' },
   { slug: 'hollowknight', imgSrc: '/assets/hollow-capa.png', alt: 'Hollow Knight' },
-  { slug: 'limbo', imgSrc: '/assets/limbo.png', alt: 'Limbo' },
+  { slug: 'cuphead', imgSrc: '/assets/Cuphead logo.png', alt: 'Cup Head' },
   { slug: 'undertale', imgSrc: '/assets/undertale.png', alt: 'Undertale' },
   { slug: 'bastion', imgSrc: '/assets/bastion.png', alt: 'Bastion' },
   { slug: 'untitled-goose-game', imgSrc: '/assets/goose intro.png', alt: 'Untitled Goose Game' },

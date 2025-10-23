@@ -88,6 +88,42 @@ export const gamesData: GameData[] = [
     images: ['/assets/hk1.png', '/assets/hollow2.png', '/assets/hollow3.png'],
     videoUrl: 'https://www.youtube.com/embed/UAO2urG23S4?si=GRWd2eY6XN6StVMC',
   },
+
+  {
+    slug: 'cuphead',
+    title: 'CupHead',
+    backgroundImage: '/assets/cuphead-background.jpg',
+    cardImage: '/assets/Cuphead 1.png',
+    description: [
+      'Cuphead gira em torno dos irmãos Xicrinho (Cuphead) e Caneco (Mugman), que fazem um pacto com o Diabo após perderem em seu cassino. Para não entregarem suas almas, eles precisam coletar contratos de outros devedores para o Diabo, embarcando em uma aventura perigosa pelas Ilhas Tinteiro e enfrentando chefes inspirados em desenhos animados clássicos dos anos 1930 '
+    ],
+    details: {
+      releaseDate: '29 de setembro de 2017',
+      developer: 'Studio MDHR Entertainment',
+      publisher: 'Studio MDHR Entertainment',
+      tags: 'Cooperativo, Desenho Animado, 2D',
+    },
+    images: ['/assets/Cuphead 2.png', '/assets/Cuphead 3.png', '/assets/Cuphead 4.png'],
+    videoUrl: 'https://www.youtube.com/embed/NN-9SQXoi50?si=0-_mIkxQY0mrIih8',
+  },
+
+  {
+    slug: 'katanazero',
+    title: 'Katana Zero',
+    backgroundImage: '/assets/kz-background.png',
+    cardImage: '/assets/kz-hero.png',
+    description: [
+      'um assassino com amnésia que manipula o tempo e usa habilidades de katana para desvendar seu passado. O jogador controla Zero, que precisa completar missões de assassinato, mas a história é contada de forma misteriosa, envolvendo escolhas de diálogo e elementos como a droga Cronos e o projeto governamental "Programa Nu".  '
+    ],
+    details: {
+      releaseDate: '18 de abril de 2019',
+      developer: 'Askiisoft',
+      publisher: 'Devolver Digital',
+      tags: 'Pixels, Ação, 2D',
+    },
+    images: ['/assets/kz1.jpg', '/assets/kz2.jpg', '/assets/kz3.png'],
+    videoUrl: 'https://www.youtube.com/embed/CaBM1HPD9xI?si=cyqzrDohqC2xuSpG',
+  },
   
   // Adicione os outros jogos (Hollow Knight, etc.) aqui
 ];

@@ -36,6 +36,20 @@ const highlightGames = [
     title: 'Life is Strange',
   },
 
+  {
+    slug: 'cuphead',
+    imgSrc: '/assets/cuphead-hero.png',
+    alt: 'Cup Head',
+    title: 'Cup Head',
+  },
+
+  {
+    slug: 'katanazero',
+    imgSrc: '/assets/kz-hero.png',
+    alt: 'Katana Zero',
+    title: 'Katana Zero',
+  },
+
 ];
 
 const Hero = () => {
