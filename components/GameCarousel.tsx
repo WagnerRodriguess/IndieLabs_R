@@ -10,8 +10,9 @@ import 'swiper/css/pagination';
 
 const games = [
   { slug: 'celeste', imgSrc: '/assets/celeste.png', alt: 'Celeste' },
-  { slug: 'project-zomboid', imgSrc: '/assets/project.png', alt: 'Project Zomboid' },
+  { slug: 'lifeisstrange', imgSrc: '/assets/lis-caurosel.png', alt: 'Life is Strange' },
   { slug: 'stardew-valley', imgSrc: '/assets/stardew.png', alt: 'Stardew Valley' },
+  { slug: 'hollowknight', imgSrc: '/assets/hollow-capa.png', alt: 'Hollow Knight' },
   { slug: 'limbo', imgSrc: '/assets/limbo.png', alt: 'Limbo' },
   { slug: 'undertale', imgSrc: '/assets/undertale.png', alt: 'Undertale' },
   { slug: 'bastion', imgSrc: '/assets/bastion.png', alt: 'Bastion' },

@@ -28,6 +28,14 @@ const highlightGames = [
     alt: 'Undertale',
     title: 'Undertale',
   },
+
+  {
+    slug: 'lifeisstrange',
+    imgSrc: '/assets/lis-hero.png',
+    alt: 'Life is Strange',
+    title: 'Life is Strange',
+  },
+
 ];
 
 const Hero = () => {
