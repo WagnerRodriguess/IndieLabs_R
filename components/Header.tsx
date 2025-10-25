@@ -22,7 +22,7 @@ const Header = () => {
   };
 
   return (
-    <header className="py-4 px-14 flex justify-between items-center">
+    <header className="flex justify-between items-center">
       <Link href="/">
         <Image src="/assets/Logo__indie.png" alt="IndieLabs Logo" width={120} height={40} />
       </Link>

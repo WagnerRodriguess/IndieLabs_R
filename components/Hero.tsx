@@ -5,10 +5,6 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-
 const highlightGames = [
   {
     slug: 'hollowknight',
@@ -31,7 +27,7 @@ const highlightGames = [
 
   {
     slug: 'lifeisstrange',
-    imgSrc: '/assets/lis-hero.png',
+    imgSrc: '/assets/lis-hero.jpg',
     alt: 'Life is Strange',
     title: 'Life is Strange',
   },
@@ -39,8 +35,8 @@ const highlightGames = [
   {
     slug: 'cuphead',
     imgSrc: '/assets/cuphead-hero.png',
-    alt: 'Cup Head',
-    title: 'Cup Head',
+    alt: 'Cuphead',
+    title: 'Cuphead',
   },
 
   {
@@ -54,7 +50,7 @@ const highlightGames = [
 
 const Hero = () => {
   return (
-    <section className="mt-12 w-[72rem] mx-auto hero-carousel">
+    <section id="hero-section" className="mt-12 w-[72rem] mx-auto hero-carousel">
       
       <div className="rounded-xl overflow-hidden">
         <Swiper

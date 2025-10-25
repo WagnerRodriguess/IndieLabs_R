@@ -29,7 +29,7 @@ export const gamesData: GameData[] = [
       releaseDate: '25 jan, 2018',
       developer: 'Maddy Makes Games Inc.',
       publisher: 'Maddy Makes Games Inc.',
-      tags: 'Pixel, Plataformas e precisão, 2D',
+      tags: 'Pixels, Plataforma, 2D',
     },
     images: ['/assets/celeste_img1.png', '/assets/celeste_img2.png', '/assets/celeste_img3.png'],
     videoUrl: 'https://www.youtube.com/embed/FqBj2IGg6Uw',
@@ -47,7 +47,7 @@ export const gamesData: GameData[] = [
       releaseDate: '15 de setembro de 2015',
       developer: 'Toby Fox',
       publisher: 'Toby Fox',
-      tags: 'Pixel, RPG, 2D',
+      tags: 'Pixels, RPG, 2D',
     },
     images: ['/assets/undertale_img1.png', '/assets/undertale_img2.png', '/assets/undertale_img3.png'],
     videoUrl: 'https://www.youtube.com/embed/1Hojv0m3TqA',
@@ -57,7 +57,7 @@ export const gamesData: GameData[] = [
     slug: 'lifeisstrange',
     title: 'Life is Strange',
     backgroundImage: '/assets/lis-background.jpg',
-    cardImage: '/assets/lis-background.jpg',
+    cardImage: '/assets/lis-caurosel.png',
     description: [
       'Life is Strange é um jogo de escolhas, onde acompanhos Max uma garota que muda de cidade para cursar Artes na universidade mais renomada de Arcadia Bay, e lá em uma situação estranha ela reencontra uma velha amiga porém vê ela sendo baleada e talvez pelo seu apelo tão grande para ela sobreviver ela desenvolve o poder de voltar no tempo e seguimos o jogo acompanhando a vida da Max agora com poder de voltar no tempo para conseguir evitar o efeito borboleta que salvar a amiga dela ocasionou. Confira o trailer do jogo e se emocione jogando! '
     ],
@@ -75,7 +75,7 @@ export const gamesData: GameData[] = [
     slug: 'hollowknight',
     title: 'Hollow Knight',
     backgroundImage: '/assets/hollow3.png',
-    cardImage: '/assets/hollow3.png',
+    cardImage: '/assets/hollow-capa.png',
     description: [
       'Forje seu caminho em Hollow Knight! Uma aventura de ação épica em um vasto reino arruinado de insetos e heróis. Explore cavernas serpenteantes, lute contra criaturas malignas e alie-se a insetos bizarros num estilo clássico 2D desenhado à mão. '
     ],
@@ -85,15 +85,15 @@ export const gamesData: GameData[] = [
       publisher: 'Team Cherry',
       tags: 'Plataforma, Metrodvania, 2D',
     },
-    images: ['/assets/hk1.png', '/assets/hollow2.png', '/assets/hollow3.png'],
+    images: ['/assets/hk1.png', '/assets/hk2.png', '/assets/hk3.png'],
     videoUrl: 'https://www.youtube.com/embed/UAO2urG23S4?si=GRWd2eY6XN6StVMC',
   },
 
   {
     slug: 'cuphead',
-    title: 'CupHead',
+    title: 'Cuphead',
     backgroundImage: '/assets/cuphead-background.jpg',
-    cardImage: '/assets/Cuphead 1.png',
+    cardImage: '/assets/Cuphead logo.png',
     description: [
       'Cuphead gira em torno dos irmãos Xicrinho (Cuphead) e Caneco (Mugman), que fazem um pacto com o Diabo após perderem em seu cassino. Para não entregarem suas almas, eles precisam coletar contratos de outros devedores para o Diabo, embarcando em uma aventura perigosa pelas Ilhas Tinteiro e enfrentando chefes inspirados em desenhos animados clássicos dos anos 1930 '
     ],
@@ -123,6 +123,60 @@ export const gamesData: GameData[] = [
     },
     images: ['/assets/kz1.jpg', '/assets/kz2.jpg', '/assets/kz3.png'],
     videoUrl: 'https://www.youtube.com/embed/CaBM1HPD9xI?si=cyqzrDohqC2xuSpG',
+  },
+
+  {
+    slug: 'project_zomboid',
+    title: 'Project Zomboid',
+    backgroundImage: '/assets/zomboid_background.jpg',
+    cardImage: '/assets/project.png',
+    description: [
+      'Project Zomboid é um jogo eletrônico de terror de sobrevivência isométrico de mundo aberto. Se passa em um mundo pós-apocalíptico infestado de zumbis, onde o jogador é desafiado a sobreviver o máximo possível antes de morrer inevitavelmente.'
+    ],
+    details: {
+      releaseDate: '8 de novembro de 2013',
+      developer: 'The Indie Stone',
+      publisher: ' The Indie Stone',
+      tags: 'Sobrevivência, Zumbis, Mundo Aberto',
+    },
+    images: ['/assets/zomboid1.png', '/assets/zomboid2.png', '/assets/zomboid3.png'],
+    videoUrl: 'https://www.youtube.com/embed/nPbsDmzZ3Oc?si=dk9YlzGAMOTZDzE4',
+  },
+
+  {
+    slug: 'gris',
+    title: 'Gris',
+    backgroundImage: '/assets/gris_background.png',
+    cardImage: '/assets/Gris.png',
+    description: [
+      'Gris é uma jovem esperançosa, perdida em seu próprio mundo, que lida com uma dolorosa experiência. Sua jornada pela tristeza se manifesta em seu vestido, que concede a ela novas habilidades para navegar melhor por sua realidade desbotada.'
+    ],
+    details: {
+      releaseDate: '13 de dezembro de 2018',
+      developer: 'Nomada Studio',
+      publisher: 'Devolver Digital',
+      tags: '2D, Plataforma, Aventura',
+    },
+    images: ['/assets/Gris 1.png', '/assets/Gris 2.png', '/assets/Gris 3.png'],
+    videoUrl: 'https://www.youtube.com/embed/xtWnBHG6dis?si=HG-doTEucUi5vW2d',
+  },
+
+  {
+    slug: 'stardew_valley',
+    title: 'Stardew Valley',
+    backgroundImage: '/assets/st_background.png',
+    cardImage: '/assets/st_background.png',
+    description: [
+      'Você herdou a antiga fazenda do seu avô, em Stardew Valley. Com ferramentas de segunda-mão e algumas moedas, você parte para dar início a sua nova vida. Será que você vai aprender a viver da terra, a transformar esse matagal em um próspero lar?'
+    ],
+    details: {
+      releaseDate: '13 de dezembro de 2018',
+      developer: 'ConcernedApe',
+      publisher: 'ConcernedApe',
+      tags: '2D, Simulação, Pixels',
+    },
+    images: ['/assets/img1st.png', '/assets/img2st.png', '/assets/img3st.png'],
+    videoUrl: 'https://www.youtube.com/embed/ot7uXNQskhs?si=mxQLT0LewEyrJHmR',
   },
   
   // Adicione os outros jogos (Hollow Knight, etc.) aqui

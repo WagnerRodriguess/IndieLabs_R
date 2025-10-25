@@ -1,12 +1,10 @@
-'use client'; 
+'use client';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules'; 
 import Image from 'next/image';
 import Link from 'next/link';
-
-import 'swiper/css';
-import 'swiper/css/pagination';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const games = [
   { slug: 'celeste', imgSrc: '/assets/celeste.png', alt: 'Celeste' },
@@ -15,45 +13,60 @@ const games = [
   { slug: 'hollowknight', imgSrc: '/assets/hollow-capa.png', alt: 'Hollow Knight' },
   { slug: 'cuphead', imgSrc: '/assets/Cuphead logo.png', alt: 'Cup Head' },
   { slug: 'undertale', imgSrc: '/assets/undertale.png', alt: 'Undertale' },
-  { slug: 'bastion', imgSrc: '/assets/bastion.png', alt: 'Bastion' },
-  { slug: 'untitled-goose-game', imgSrc: '/assets/goose intro.png', alt: 'Untitled Goose Game' },
+  { slug: 'project_zomboid', imgSrc: '/assets/project.png', alt: 'Project Zomboid' },
+  { slug: 'gris', imgSrc: '/assets/Gris.png', alt: 'Gris' },
+  { slug: 'stardew_valley', imgSrc: '/assets/stardew.png', alt: 'Stardew Valley' },
 ];
 
 const GameCarousel = () => {
   return (
-    <section className="mt-12 mb-48 max-w-[1440px] mx-auto">
-      <h2 className="text-3xl font-bold mb-4">Recomendado para você</h2>
-      <Swiper
-        modules={[Pagination]}
-        spaceBetween={24}
-        slidesPerView={5}
-        pagination={{ clickable: true }}
-        className="!pb-10"
-      >
-        {games.map((game) => (
-          <SwiperSlide key={game.slug}>
-            <Link href={`/games/${game.slug}`}>
-              
-              
-              <div className="
-                w-48 h-64 mx-auto rounded-lg overflow-hidden group
-                transition-shadow duration-300
-                group-hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]
-              ">
-                <Image
-                  src={game.imgSrc}
-                  alt={game.alt}
-                  width={200}
-                  height={280}
-                  
-                  className="w-full h-full object-cover"
-                />
-              </div>
+    <section id="game-carousel-section" className="w-[72rem] mx-auto">
+      <h2 className="">Recomendado para você</h2>
+      
+      <div className="flex items-center gap-4">
 
-            </Link>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+
+        <button 
+        id="game-carousel-prev-btn"
+     
+        >
+          <ChevronLeft size={32} />
+        </button>
+
+        <Swiper
+          modules={[Navigation]}
+          navigation={{
+            nextEl: '#game-carousel-next-btn',
+            prevEl: '#game-carousel-prev-btn',
+          }}
+          
+          slidesPerView={4}
+          slidesPerGroup={4}
+          spaceBetween={20}
+          id="game-carousel"
+          className="flex-1"
+        >
+          {games.map((game) => (
+            <SwiperSlide key={game.slug}>
+              <Link href={`/games/${game.slug}`}>
+                <div className="game-carousel-slide-content">
+                  <Image
+                    src={game.imgSrc}
+                    alt={game.alt}
+                    fill
+                    className="game-carousel-image" 
+                  />
+                </div>
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        <button id="game-carousel-next-btn">
+          <ChevronRight size={32} />
+        </button>
+
+      </div>
     </section>
   );
 };
