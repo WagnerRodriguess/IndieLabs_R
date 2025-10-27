@@ -12,6 +12,21 @@ const highlightGames = [
     alt: 'Hollow Knight',
     title: 'Hollow Knight',
   },
+
+  {
+    slug: 'until_then',
+    imgSrc: '/assets/ut-hero.png',
+    alt: 'Until Then',
+    title: 'Until Then',
+  },
+
+  {
+    slug: 'outer_wilds',
+    imgSrc: '/assets/ow_hero.png',
+    alt: 'Outer Wilds',
+    title: 'Outer Wilds',
+  },
+
   {
     slug: 'celeste',
     imgSrc: '/assets/celeste_banner.jpg',

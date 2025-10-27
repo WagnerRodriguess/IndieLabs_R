@@ -8,6 +8,8 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const games = [
   { slug: 'celeste', imgSrc: '/assets/celeste.png', alt: 'Celeste' },
+  { slug: 'until_then', imgSrc: '/assets/untilthen.png', alt: 'Until Then' },
+  { slug: 'outer_wilds', imgSrc: '/assets/outerwilds.png', alt: 'Outer Wilds' },
   { slug: 'lifeisstrange', imgSrc: '/assets/lis-caurosel.png', alt: 'Life is Strange' },
   { slug: 'katanazero', imgSrc: '/assets/kz-caurosel.png', alt: 'Katana Zero' },
   { slug: 'hollowknight', imgSrc: '/assets/hollow-capa.png', alt: 'Hollow Knight' },
@@ -24,7 +26,6 @@ const GameCarousel = () => {
       <h2 className="">Recomendado para você</h2>
       
       <div className="flex items-center gap-4">
-
 
         <button 
         id="game-carousel-prev-btn"

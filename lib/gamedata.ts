@@ -178,6 +178,43 @@ export const gamesData: GameData[] = [
     images: ['/assets/img1st.png', '/assets/img2st.png', '/assets/img3st.png'],
     videoUrl: 'https://www.youtube.com/embed/ot7uXNQskhs?si=mxQLT0LewEyrJHmR',
   },
+
+  {
+    slug: 'until_then',
+    title: 'Until Then',
+    backgroundImage: '/assets/ut_background.png',
+    cardImage: '/assets/ut_background.png',
+    description: [
+      'Um fatídico encontro desencadeia um efeito dominó, revirando a vida de Mark. Pessoas somem e as memórias se mostram incertas. Revele uma verdade oculta com Mark e seus amigos nesta narrativa de aventura e corra para resolver o mistério antes que seja tarde demais.'
+    ],
+    details: {
+      releaseDate: '25 de junho de 2024',
+      developer: 'Polychroma Games',
+      publisher: 'Maximum Entertainment',
+      tags: '2D, Visual Novel, Pixels, Aventura',
+    },
+    images: ['/assets/ut_img1.png', '/assets/ut_img2.png', '/assets/ut_img3.png'],
+    videoUrl: 'https://www.youtube.com/embed/2_dBTwoCcD4?si=33BP4BXEQZkZ4I4v',
+  },
+
+  {
+    slug: 'outer_wilds',
+    title: 'Outer Wilds',
+    backgroundImage: '/assets/ow_background.png',
+    cardImage: '/assets/outerwilds.png',
+    description: [
+      'Outer Wilds é um jogo de mistério de mundo aberto aclamado pela crítica que retrata um sistema solar fadado a um loop temporal perpétuo.'
+    ],
+    details: {
+      releaseDate: '18 de junho de 2020',
+      developer: 'Mobius Digital',
+      publisher: 'Annapurna Interactive',
+      tags: '3D, Mundo Aberto, Exploração, Aventura',
+    },
+    images: ['/assets/ow_img1.png', '/assets/ow_img2.png', '/assets/ow_img3.png'],
+    videoUrl: 'https://www.youtube.com/embed/ZKJUMMCJvGM?si=OhJEeeG4lIsvE77I',
+  },
+  
   
   // Adicione os outros jogos (Hollow Knight, etc.) aqui
 ];
