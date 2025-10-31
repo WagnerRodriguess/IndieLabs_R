@@ -65,58 +65,33 @@ const highlightGames = [
 
 const Hero = () => {
   return (
-    <section id="hero-section" className="mt-12 w-[72rem] mx-auto hero-carousel">
+    <section id="hero-section" className="hero-carousel">
       
-      <div className="rounded-xl overflow-hidden">
+      <div className="hero-swiper-container">
         <Swiper
           modules={[Autoplay, Pagination, Navigation]}
-          spaceBetween={30}
-          centeredSlides={true}
-          autoplay={{
-            delay: 4000,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true, 
-          }}
+          pagination={{ clickable: true }}
           navigation={true} 
           loop={true}
-          className="h-[400px]" 
         >
-          {highlightGames.map((game) => (
-            <SwiperSlide key={game.slug}>
-              
+          {highlightGames.map((game, index) => (
+            <SwiperSlide key={index}>
               <Link href={`/games/${game.slug}`}>
-                <div className="
-                  relative w-full h-full group
-                  transition-shadow duration-300
-                  group-hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]
-                ">
+                <div className="hero-slide-content">
                   <Image
                     src={game.imgSrc}
                     alt={game.alt}
-                    fill 
+                    fill
                   />
-                  
-                  <div id="hero-text-container" 
-                  className="
-                    absolute inset-0 
-                    bg-gradient-to-r from-black/70 via-black/50 to-transparent 
-                    pt-12 pb-12 pl-48 pr-12
-                    flex flex-col justify-end
-                    h-full
-                  ">
-                    <h2 className="text-4xl font-bold">{game.title}</h2>
-                  </div>
+                  <div className="hero-slide-text">{game.alt}</div>
                 </div>
               </Link>
             </SwiperSlide>
           ))}
         </Swiper>
-      </div> 
+      </div>
 
     </section>
   );
 };
-
 export default Hero;

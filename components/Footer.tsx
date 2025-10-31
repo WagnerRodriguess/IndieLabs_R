@@ -10,13 +10,13 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="border-t mt-20">
-      <div className="max-w-[1106px] mx-auto flex justify-between items-center h-[100px]">
-        <div className="flex items-center gap-4">
+    <footer id="main-footer">
+      <div id="footer-content">
+        <div id="footer-logo-group">
           <Image src="/assets/logo.png" alt="IndieLabs Logo" width={120} height={40} />
-          <p className="text-sm text-gray-400">| Todos os direitos reservados</p>
+          <p>| Todos os direitos reservados</p>
         </div>
-        <div className="flex items-center gap-4">
+        <div id="footer-social-group">
           {socialLinks.map((link) => (
             <Image key={link.src} src={link.src} alt={link.alt} width={24} height={24} />
           ))}

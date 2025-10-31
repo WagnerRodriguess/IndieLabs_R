@@ -22,15 +22,11 @@ const games = [
 
 const GameCarousel = () => {
   return (
-    <section id="game-carousel-section" className="w-[72rem] mx-auto">
-      <h2 className="">Recomendado para você</h2>
+    <section id="game-carousel-section">
+      <h2 id="game-carousel-title">Recomendado para você</h2>
       
-      <div className="flex items-center gap-4">
-
-        <button 
-        id="game-carousel-prev-btn"
-     
-        >
+      <div id="game-carousel-container">
+        <button id="game-carousel-prev-btn">
           <ChevronLeft size={32} />
         </button>
 
@@ -40,12 +36,21 @@ const GameCarousel = () => {
             nextEl: '#game-carousel-next-btn',
             prevEl: '#game-carousel-prev-btn',
           }}
-          
-          slidesPerView={4}
-          slidesPerGroup={4}
-          spaceBetween={20}
-          id="game-carousel"
+          spaceBetween={16}
+          id="game-carousel" 
           className="flex-1"
+          
+          slidesPerGroup={1}
+          breakpoints={{
+            640: {
+              slidesPerView: 3,
+              slidesPerGroup: 3,
+            },
+            1024: {
+              slidesPerView: 4,
+              slidesPerGroup: 4,
+            }
+          }}
         >
           {games.map((game) => (
             <SwiperSlide key={game.slug}>
@@ -66,7 +71,6 @@ const GameCarousel = () => {
         <button id="game-carousel-next-btn">
           <ChevronRight size={32} />
         </button>
-
       </div>
     </section>
   );
