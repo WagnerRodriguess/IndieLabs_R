@@ -1,3 +1,5 @@
+// components/GameCarousel.tsx
+
 'use client';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -40,6 +42,7 @@ const GameCarousel = () => {
           id="game-carousel" 
           className="flex-1"
           
+          slidesPerView={1.5}
           slidesPerGroup={1}
           breakpoints={{
             640: {
@@ -75,5 +78,4 @@ const GameCarousel = () => {
     </section>
   );
 };
-
 export default GameCarousel;

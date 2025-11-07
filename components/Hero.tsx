@@ -1,5 +1,4 @@
 'use client'; 
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Image from 'next/image';
@@ -66,13 +65,16 @@ const highlightGames = [
 const Hero = () => {
   return (
     <section id="hero-section" className="hero-carousel">
-      
       <div className="hero-swiper-container">
         <Swiper
           modules={[Autoplay, Pagination, Navigation]}
           pagination={{ clickable: true }}
           navigation={true} 
           loop={true}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
         >
           {highlightGames.map((game, index) => (
             <SwiperSlide key={index}>
@@ -90,7 +92,6 @@ const Hero = () => {
           ))}
         </Swiper>
       </div>
-
     </section>
   );
 };

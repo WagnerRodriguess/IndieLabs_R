@@ -3,7 +3,7 @@ import GameCarousel from '../components/GameCarousel';
 
 export default function Home() {
   return (
-    <main className="flex-grow">
+    <main id="main-content">
       <Hero />
       <GameCarousel />
     </main>

@@ -113,7 +113,7 @@ export const gamesData: GameData[] = [
     backgroundImage: '/assets/kz-background.png',
     cardImage: '/assets/kz-hero.png',
     description: [
-      'um assassino com amnésia que manipula o tempo e usa habilidades de katana para desvendar seu passado. O jogador controla Zero, que precisa completar missões de assassinato, mas a história é contada de forma misteriosa, envolvendo escolhas de diálogo e elementos como a droga Cronos e o projeto governamental "Programa Nu".  '
+      'Um assassino com amnésia que manipula o tempo e usa habilidades de katana para desvendar seu passado. O jogador controla Zero, que precisa completar missões de assassinato, mas a história é contada de forma misteriosa, envolvendo escolhas de diálogo e elementos como a droga Cronos e o projeto governamental "Programa Nu".  '
     ],
     details: {
       releaseDate: '18 de abril de 2019',

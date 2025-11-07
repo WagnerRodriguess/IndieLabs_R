@@ -1,10 +1,10 @@
-'use client';
+'use client'; 
 import { usePathname } from 'next/navigation';
-
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import type { Metadata } from "next";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,14 +18,18 @@ export default function RootLayout({
   const isGamePage = pathname.startsWith('/games/');
 
   return (
-    <html lang="en" className="h-full">
-      <body className={`${inter.className} flex flex-col min-h-screen`}>
-        <Header />
-        
-        {children} 
-        
-        {!isGamePage && <Footer />}
 
+    
+    <html lang="pt-br">
+
+      <head>
+          <title>Indie Labs</title>
+      </head>
+      
+      <body className={inter.className}>
+        <Header />
+        {children}
+        {!isGamePage && <Footer />}
       </body>
     </html>
   );

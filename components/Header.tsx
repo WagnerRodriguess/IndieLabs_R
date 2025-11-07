@@ -3,8 +3,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation'; // MUDANÇA: Importa o hook
+import { ChevronLeft } from 'lucide-react'; // MUDANÇA: Importa o ícon
 
 const Header = () => {
+
+  const pathname = usePathname();
+  const isGamePage = pathname.startsWith('/games/');
+  const isSearchPage = pathname.startsWith('/search')
+
   const [searchTerm, setSearchTerm] = useState('');
   const router = useRouter(); 
 
@@ -23,9 +30,17 @@ const Header = () => {
 
   return (
     <header id="main-header" className="flex justify-between items-center mt-10 ">
-      <Link href="/">
-        <Image src="/assets/Logo__indie.png" alt="IndieLabs Logo" width={120} height={40} />
-      </Link>
+      {isGamePage || isSearchPage ? (
+
+        <Link href="/" id="back-to-home-btn">
+          <ChevronLeft size={20} />
+          Voltar para a Home
+        </Link>
+      ) : (
+
+          <Image src="/assets/Logo__indie.png" alt="IndieLabs Logo" width={120} height={40} />
+      
+      )}
       
       <div className="flex items-center">
         <input
