@@ -510,3 +510,43 @@ footer {
     gap: 1rem; 
   }
 }
+
+#official-stores-container {
+  margin-top: 2rem;
+  color: #ffffff; 
+}
+
+#official-stores-title {
+  font-size: 1.5rem; 
+  font-weight: 700; 
+  margin-bottom: 1rem;
+  color:#0278ff;
+
+  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.8); 
+}
+
+#stores-logo-grid {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 1rem; 
+}
+
+.store-logo-link {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.2); 
+  padding: 0.5rem;
+  border-radius: 0.5rem; 
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+  transition: all 0.2s ease-in-out;
+}
+.store-logo-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px); 
+}
+
+.store-logo-link img {
+  display: block;
+  height: 45px;
+  width: 120px;
+  object-fit: contain;
+}
