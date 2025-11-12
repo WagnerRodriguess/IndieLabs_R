@@ -33,10 +33,10 @@ const Header = () => {
   }, [query]);
 
   const goToSearchPage = () => {
-    if (query.trim()) {
+
       router.push(`/search?q=${encodeURIComponent(query.trim())}`);
       setOpen(false);
-    }
+      
   };
 
   return (
@@ -61,138 +61,115 @@ const Header = () => {
       )}
 
       {/* Barra de pesquisa */}
-      <div ref={containerRef} className="relative w-[70%] max-w-3xl mx-auto">
-        <div className="flex items-center bg-[#2F1A3D] border border-[#7e22ce] rounded-full px-5 py-4 shadow-lg transition-all duration-300 hover:border-purple-500 focus-within:border-purple-400">
-          <Search className="text-purple-300 w-5 h-5 mr-3" />
-          <input
-            type="search"
-            placeholder="Pesquisar"
-            value={query}
-            onChange={(e) => {
-              const v = e.target.value;
-              setQuery(v);
-              setOpen(v.trim().length > 0);
-            }}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') goToSearchPage();
-              if (e.key === 'Escape') setOpen(false);
-            }}
-            className="bg-transparent outline-none text-white placeholder-purple-300 w-full text-base font-medium
-                       [color-scheme:dark]
-                       [&::-webkit-search-cancel-button]:appearance-none
-                       [&::-ms-clear]:hidden [&::-ms-reveal]:hidden"
-          />
-          {query && (
-            <X
-              onClick={() => {
-                setQuery('');
-                setOpen(false);
+      <div ref={containerRef} className="relative w-full max-w-2xl mx-auto px-4 md:px-0">
+        <div className="relative">
+          <div className="flex items-center bg-gradient-to-r from-[#2F1A3D] to-[#3D1F4A] border border-[#9B65EC] rounded-xl px-6 py-3.5 shadow-2xl transition-all duration-300 hover:border-[#c084fc] hover:shadow-[0_0_30px_rgba(155,101,236,0.3)] focus-within:border-[#c084fc] focus-within:shadow-[0_0_30px_rgba(155,101,236,0.4)]">
+            <Search className="text-[#c084fc] w-6 h-6 mr-4 flex-shrink-0" />
+            <input
+              type="search"
+              placeholder="Buscar jogos indie..."
+              value={query}
+              onChange={(e) => {
+                const v = e.target.value;
+                setQuery(v);
+                setOpen(v.trim().length > 0);
               }}
-              className="text-purple-300 cursor-pointer w-5 h-5"
-              aria-label="Limpar"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter'){
+                  e.preventDefault();
+                  goToSearchPage();
+                }
+                if (e.key === 'Escape') setOpen(false);
+              }}
+              className="bg-transparent outline-none text-white placeholder-purple-400 w-full text-base font-medium
+                         [color-scheme:dark]
+                         [&::-webkit-search-cancel-button]:appearance-none
+                         [&::-ms-clear]:hidden [&::-ms-reveal]:hidden"
             />
-          )}
-        </div>
-
-        {/* Dropdown estilo Steam */}
-        {open && (
-          <div className="absolute left-0 right-0 mt-2 bg-[#1f1230] border border-[#581c87] rounded-lg shadow-xl max-h-80 overflow-y-auto z-50">
-            {results.length > 0 ? (
-              <ul className="py-2 list-none m-0 p-0">
-
-                {results.map((g) => (
-                  <li
-                    key={g.slug}
-                    className="px-4 py-2 hover:bg-purple-900/30 transition-colors cursor-pointer"
-                    onClick={() => {
-                      router.push(`/games/${g.slug}`);
-                      setOpen(false);
-                    }}
-                  >
-                    <div
-                      className="flex items-center"
-                      style={{
-                        gap: '1.75rem',
-                        alignItems: 'center',
-                        isolation: 'isolate',
-                      }}
-                    >
-                      {/* Ponto */}
-                      <span
-                        style={{
-                          color: '#c084fc',
-                          fontSize: '1.2rem',
-                          marginRight: '0.5rem',
-                          lineHeight: 1,
-                        }}
-                      >
-                        •
-                      </span>
-
-                      {/* Imagem */}
-                      <img
-                        src={g.cardImage}
-                        alt={g.title}
-                        width={70}
-                        height={45}
-                        style={{
-                          borderRadius: '6px',
-                          objectFit: 'cover',
-                          flexShrink: 0,
-                          marginRight: '0.75rem', // 🔹 antes era 1.5rem
-                        }}
-                      />
-
-                      {/* Texto */}
-                      <div
-                        style={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          color: '#fff',
-                          justifyContent: 'center',
-                          transform: 'translateY(1px)',
-                        }}
-                      >
-                        <p
-                          style={{
-                            fontSize: '1rem',
-                            fontWeight: 600,
-                            lineHeight: 1.3,
-                            marginBottom: '2px',
-                          }}
-                        >
-                          {g.title}
-                        </p>
-                        <p
-                          style={{
-                            fontSize: '0.85rem',
-                            color: '#d1d5db',
-                            lineHeight: 1.2,
-                          }}
-                        >
-                          {g.details?.tags}
-                        </p>
-                      </div>
-                    </div>
-
-
-
-                  </li>
-                ))}
-                <li
-                  className="px-4 py-2 text-center text-sm text-purple-200 hover:bg-purple-900/30 cursor-pointer"
-                  onClick={goToSearchPage}
-                >
-                Ver mais resultados
-                </li>
-              </ul>
-            ) : (
-              <div className="px-4 py-3 text-sm text-purple-200">
-              Nenhum resultado encontrado.
-              </div>
+            {query && (
+              <X
+                onClick={() => {
+                  setQuery('');
+                  setOpen(false);
+                }}
+                className="text-[#c084fc] hover:text-[#f0e7fe] cursor-pointer w-6 h-6 flex-shrink-0 ml-3 transition-colors duration-200"
+                aria-label="Limpar"
+              />
             )}
           </div>
-        )}
+
+          {/* Dropdown melhorado */}
+          {open && (
+            <div className="absolute left-0 right-0 top-full mt-3 bg-gradient-to-b from-[#2F1A3D] to-[#1a0b2e] border border-[#9B65EC] rounded-xl shadow-2xl max-h-96 overflow-y-auto z-50 backdrop-blur-sm">
+              {results.length > 0 ? (
+                <>
+                  <div className="px-4 py-3 border-b border-[#581c87]/30 text-xs text-[#9ca3af] font-semibold uppercase tracking-wide">
+                    🎮 Sugestões ({results.length})
+                  </div>
+                  <ul className="py-2 list-none m-0 p-0">
+                    {results.map((g, index) => (
+                      <li
+                        key={g.slug}
+                        className="px-4 py-3 hover:bg-[#9B65EC]/20 transition-all duration-200 cursor-pointer border-b border-[#581c87]/10 last:border-b-0 hover:border-b-[#9B65EC]/30"
+                        onClick={() => {
+                          router.push(`/games/${g.slug}`);
+                          setOpen(false);
+                        }}
+                      >
+                        <div className="flex items-center gap-4">
+                          {/* Índice */}
+                          <div className="text-[#9B65EC] font-bold text-sm min-w-fit w-6 h-6 flex items-center justify-center bg-[#9B65EC]/20 rounded-full">
+                            {index + 1}
+                          </div>
+
+                          {/* Imagem */}
+                          <div className="relative flex-shrink-0 overflow-hidden rounded-lg border border-[#581c87]/50">
+                            <img
+                              src={g.cardImage}
+                              alt={g.title}
+                              width={72}
+                              height={48}
+                              style={{
+                                objectFit: 'cover',
+                              }}
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-200" />
+                          </div>
+
+                          {/* Texto */}
+                          <div className="flex-grow">
+                            <p className="text-white font-bold text-sm leading-tight mb-1.5 hover:text-[#c084fc] transition-colors duration-200">
+                              {g.title}
+                            </p>
+                            <p className="text-[#9ca3af] text-xs leading-tight line-clamp-2">
+                              {g.details?.tags}
+                            </p>
+                          </div>
+
+                          {/* Ícone de seta */}
+                          <div className="flex-shrink-0 text-[#9B65EC] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            →
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    className="w-full px-4 py-3 text-center text-sm text-[#c084fc] hover:text-white hover:bg-[#9B65EC]/30 cursor-pointer border-t border-[#581c87]/30 font-semibold transition-all duration-200 hover:font-bold"
+                    onClick={goToSearchPage}
+                  >
+                    🔍 Ver mais resultados ({gamesData.filter(g => g.title.toLowerCase().includes(query.toLowerCase())).length})
+                  </button>
+                </>
+              ) : (
+                <div className="px-4 py-8 text-center">
+                  <p className="text-[#9ca3af] text-base font-medium"> Nenhum resultado encontrado</p>
+                  <p className="text-[#6b7280] text-sm mt-1">Tente buscar por outro termo</p>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );
