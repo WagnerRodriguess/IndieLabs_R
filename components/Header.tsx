@@ -61,13 +61,13 @@ const Header = () => {
       )}
 
       {/* Barra de pesquisa */}
-      <div ref={containerRef} className="relative w-full max-w-2xl mx-auto px-4 md:px-0">
+     <div ref={containerRef} id="search-container">
         <div className="relative">
           <div className="flex items-center bg-gradient-to-r from-[#2F1A3D] to-[#3D1F4A] border border-[#9B65EC] rounded-xl px-6 py-3.5 shadow-2xl transition-all duration-300 hover:border-[#c084fc] hover:shadow-[0_0_30px_rgba(155,101,236,0.3)] focus-within:border-[#c084fc] focus-within:shadow-[0_0_30px_rgba(155,101,236,0.4)]">
             <Search className="text-[#c084fc] w-6 h-6 mr-4 flex-shrink-0" />
             <input
               type="search"
-              placeholder="Buscar jogos indie..."
+              placeholder="Buscar jogo..."
               value={query}
               onChange={(e) => {
                 const v = e.target.value;
@@ -92,7 +92,7 @@ const Header = () => {
                   setQuery('');
                   setOpen(false);
                 }}
-                className="text-[#c084fc] hover:text-[#f0e7fe] cursor-pointer w-6 h-6 flex-shrink-0 ml-3 transition-colors duration-200"
+                className="search-clear-btn"
                 aria-label="Limpar"
               />
             )}
