@@ -3,13 +3,19 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useMemo, useRef, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { Search, X, ChevronLeft } from 'lucide-react';
+import { Search, X, ChevronLeft, LogIn, LogOut, User } from 'lucide-react';
 import { gamesData } from '../lib/gamedata';
+import { signOut, useSession } from 'next-auth/react';
 
 const Header = () => {
   const pathname = usePathname();
   const isGamePage = pathname.startsWith('/games/');
   const isSearchPage = pathname.startsWith('/search');
+  const isAuthPage = pathname === '/login' || pathname === '/register';
+  const showBackButton = isGamePage || isSearchPage || isAuthPage;
+  const showSearchBar = !isAuthPage;
+
+  const { data: session, status } = useSession();
 
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);
@@ -46,7 +52,7 @@ const Header = () => {
     <header className="header-container">
 
       {/* Logo ou Botão de Voltar */}
-      {isGamePage || isSearchPage ? (
+      {showBackButton ? (
         <Link href="/" className="back-btn">
           <ChevronLeft size={20} /> Voltar ao home
         </Link>
@@ -61,6 +67,7 @@ const Header = () => {
       )}
 
       {/* Barra de Pesquisa */}
+    {showSearchBar && (
       <div ref={containerRef} className="search-bar-wrapper">
         <div className="search-bar">
           <Search className="search-icon" />
@@ -82,6 +89,7 @@ const Header = () => {
               }
               if (e.key === 'Escape') setOpen(false);
             }}
+          
           />
 
           {query && (
@@ -140,6 +148,37 @@ const Header = () => {
               </div>
             )}
           </div>
+        )}
+      
+      </div>
+    )}
+    
+    <div className="user-auth-section">
+        {status === 'loading' && (
+          <div className="auth-loading">Carregando...</div>
+        )}
+
+        {status === 'unauthenticated' && !isAuthPage && (
+          <Link href="/login" className="auth-link-btn login-btn">
+            <LogIn size={18} />
+            Login
+          </Link>
+        )}
+
+        {status === 'authenticated' && (
+          <>
+            <div className="auth-welcome">
+              <User size={16} />
+              Olá, <strong>{session.user.username}</strong>
+            </div>
+            <button
+              onClick={() => signOut({ callbackUrl: '/' })} 
+              className="auth-link-btn logout-btn"
+            >
+              <LogOut size={18} />
+              Sair
+            </button>
+          </>
         )}
       </div>
     </header>
