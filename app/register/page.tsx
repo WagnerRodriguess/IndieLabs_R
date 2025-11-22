@@ -3,13 +3,14 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function RegisterPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -17,8 +18,16 @@ export default function RegisterPage() {
     setIsLoading(true);
     setError('');
 
-    if (!username || !password) {
-      setError('Usuário e senha são obrigatórios.');
+    const cleanUsername = username.trim(); 
+
+    if (!cleanUsername) {
+      setError('Nome de usuário inválido.');
+      setIsLoading(false);
+      return;
+    }
+
+    if (password.length < 6) {
+      setError('A senha deve ter pelo menos 6 caracteres.');
       setIsLoading(false);
       return;
     }
@@ -30,7 +39,7 @@ export default function RegisterPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: username,
+          username: cleanUsername, 
           password: password,
         }),
       });
@@ -40,11 +49,14 @@ export default function RegisterPage() {
       } else if (res.status === 409) {
         const data = await res.json();
         setError(data.message || 'Esse nome de usuário já está em uso.');
+      } else if (res.status === 400) {
+        const text = await res.text();
+        setError(text);
       } else {
-        setError('Ocorreu um erro no cadastro. Tente novamente.');
+        setError('Ocorreu um erro no registo. Tente novamente.');
       }
     } catch (err) {
-      setError('Erro de conexão.');
+      setError('Erro de conexão. Verifique sua internet.');
     } finally {
       setIsLoading(false);
     }
@@ -64,7 +76,7 @@ export default function RegisterPage() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
-              className="auth-input"
+              className="auth-input"    
             />
           </div>
 
@@ -72,12 +84,22 @@ export default function RegisterPage() {
             <label htmlFor="password">Senha</label>
             <input
               id="password"
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
               className="auth-input"
+              placeholder="Mínimo de 6 caracteres"
             />
+
+            <button
+              type="button"
+              className="auth-password-toggle"
+              onClick={() => setShowPassword(!showPassword)}
+              aria-label={showPassword ? "Esconder senha" : "Mostrar senha"}
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
           </div>
 
           {error && <p className="auth-error">{error}</p>}

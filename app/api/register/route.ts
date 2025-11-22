@@ -7,13 +7,25 @@ const prisma = new PrismaClient();
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { username, password } = body; 
+    const { username, password } = body;
+
 
     if (!username || !password) {
       return new NextResponse('Usuário e senha são obrigatórios', { status: 400 });
     }
+
+    const cleanUsername = username.trim();
+
+    if (!cleanUsername) {
+      return new NextResponse('Nome de usuário inválido.', { status: 400 });
+    }
+
+    if (password.length < 6) {
+      return new NextResponse('A senha deve ter pelo menos 6 caracteres.', { status: 400 });
+    }
+
     const existingUser = await prisma.user.findUnique({
-      where: { username: username },
+      where: { username: cleanUsername },
     });
 
     if (existingUser) {
@@ -21,16 +33,18 @@ export async function POST(request: Request) {
     }
     
     const hashedPassword = await bcrypt.hash(password, 12);
+
     const user = await prisma.user.create({
       data: {
-        username: username,
+        username: cleanUsername,
         password: hashedPassword,
       },
     });
+
     return NextResponse.json(user, { status: 201 });
 
   } catch (error) {
-    console.error('ERRO NO REGISTRO:', error);
+    console.error('ERRO NO CADASTRO:', error);
     return new NextResponse('Erro interno do servidor', { status: 500 });
   }
 }
