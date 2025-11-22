@@ -1,6 +1,7 @@
 import { gamesData } from '../../../lib/gamedata';
 import Image from 'next/image';
-import Link from 'next/link'; 
+import Link from 'next/link';
+import CommentsSection from '../../../components/CommentsSection'; 
 
 export async function generateStaticParams() {
   return gamesData.map((game) => ({
@@ -104,6 +105,10 @@ export default function GamePage({ params }: { params: { slug: string } }) {
           </div>
 
         </div>
+      </div>
+      
+      <div className="w-full max-w-[72rem] mx-auto px-4 pb-10">
+            <CommentsSection gameSlug={params.slug} />
       </div>
     </div>
   );

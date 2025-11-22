@@ -9,14 +9,13 @@ generator client {
 
 model User {
   id            String    @id @default(cuid())
-  name          String?
   username      String    @unique 
-  emailVerified DateTime?
-  image         String?
-  password      String?   
+  password      String?
+  image         String?   
 
   accounts      Account[]
   sessions      Session[]
+  comments       Comment[]
 }
 
 model Account {
@@ -43,4 +42,20 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  gameSlug  String
+
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  parentId  String?
+  parent    Comment?  @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies   Comment[] @relation("CommentReplies")
 }
