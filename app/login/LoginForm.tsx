@@ -94,6 +94,16 @@ export default function LoginForm() {
           <button type="submit" className="auth-button" disabled={isLoading}>
             {isLoading ? 'Entrando...' : 'Entrar'}
           </button>
+          
+          <p className="auth-link" style={{ marginTop: '1rem', marginBottom: '0.5rem' }}>
+            <Link 
+              href="/forgot-password" 
+              style={{ color: '#c084fc', textDecoration: 'none', fontSize: '0.9rem' }}
+              className="hover:underline"
+            >
+              Esqueceu a senha?
+            </Link>
+          </p>
 
           <p className="auth-link">
             Não tem uma conta? <Link href="/register">Cadastre-se</Link>

@@ -12,6 +12,8 @@ export default function RegisterPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
+  const [recoveryKey, setRecoveryKey] = useState('');
+  const [email, setEmail] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,6 +43,8 @@ export default function RegisterPage() {
         body: JSON.stringify({
           username: cleanUsername, 
           password: password,
+          email,
+          recoveryKey
         }),
       });
 
@@ -53,7 +57,7 @@ export default function RegisterPage() {
         const text = await res.text();
         setError(text);
       } else {
-        setError('Ocorreu um erro no registo. Tente novamente.');
+        setError('Ocorreu um erro no cadastro. Tente novamente.');
       }
     } catch (err) {
       setError('Erro de conexão. Verifique sua internet.');
@@ -81,6 +85,18 @@ export default function RegisterPage() {
           </div>
 
           <div className="auth-input-group">
+            <label>E-mail</label>
+            <input
+              type="email"
+              required
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              className="auth-input"
+              placeholder="seu@email.com"
+             />
+          </div>
+
+          <div className="auth-input-group">
             <label htmlFor="password">Senha</label>
             <input
               id="password"
@@ -100,6 +116,18 @@ export default function RegisterPage() {
             >
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
+          </div>   
+
+          <div className="auth-input-group">
+            <label>Palavra de Recuperação</label>
+            <input
+              type="text"
+              required
+              value={recoveryKey}
+              onChange={(e) => setRecoveryKey(e.target.value)}
+              className="auth-input"
+            />
+            <p className="text-xs text-gray-500 mt-1">Será usado se esquecer a senha.</p>
           </div>
 
           {error && <p className="auth-error">{error}</p>}
