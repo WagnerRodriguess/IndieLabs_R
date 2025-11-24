@@ -38,8 +38,13 @@ export const authOptions: AuthOptions = {
       }
     })
   ],
+  
 
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: "segredo-indielabs-super-secreto-fixo-no-codigo-123",
+  
+
+  debug: true,
+
   session: {
     strategy: "jwt",
   },
@@ -49,7 +54,7 @@ export const authOptions: AuthOptions = {
   callbacks: {
     async session({ session, token }) {
         if (token && session.user) {
-            session.user.name = token.username as string; 
+            session.user.name = token.username as string;
         }
         return session;
     },
