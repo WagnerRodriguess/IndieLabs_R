@@ -40,10 +40,10 @@ export const authOptions: AuthOptions = {
   ],
   
 
-  secret: "segredo-indielabs-super-secreto-fixo-no-codigo-123",
+  secret: "wingman_desenvolvimento_de_sistemas",
   
 
-  debug: true,
+  debug: process.env.NODE_ENV === 'development',
 
   session: {
     strategy: "jwt",
