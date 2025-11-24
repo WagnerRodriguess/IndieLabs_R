@@ -1764,7 +1764,7 @@ margin-top: 4rem; /* Espaço do conteúdo de cima */
   align-items: center;
   gap: 0.5rem;
   margin-top: 0.5rem;
-  margin-left: auto; /* Alinha à direita */
+  margin-left: auto; 
   transition: background 0.2s;
 }
 .comment-submit-btn:hover {
@@ -1775,14 +1775,13 @@ margin-top: 4rem; /* Espaço do conteúdo de cima */
   cursor: not-allowed;
 }
 
-/* Lista de Comentários */
 .comment-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-/* Item Individual de Comentário */
+
 .comment-item {
   background-color: rgba(47, 26, 61, 0.5);
   border: 1px solid rgba(155, 101, 236, 0.3);
@@ -1790,7 +1789,6 @@ margin-top: 4rem; /* Espaço do conteúdo de cima */
   border-radius: 12px;
 }
 
-/* Respostas (Margem à esquerda e linha vertical) */
 .comment-reply-container {
   margin-top: 0.5rem;
   margin-left: 1.5rem;
@@ -1851,7 +1849,6 @@ margin-top: 4rem; /* Espaço do conteúdo de cima */
   margin: 0;
 }
 
-/* Área de Edição */
 .comment-edit-area textarea {
   width: 100%;
   background-color: rgba(0,0,0,0.2);
@@ -1870,7 +1867,7 @@ margin-top: 4rem; /* Espaço do conteúdo de cima */
 
 .comment-edited {
   font-size: 0.7rem;
-  color: #9ca3af; /* Cinza claro */
+  color: #9ca3af;
   font-style: italic;
   margin-left: 0.5rem;
 }
@@ -1893,7 +1890,6 @@ margin-top: 4rem; /* Espaço do conteúdo de cima */
   border: 1px solid #c084fc;
 }
 
-/* Botão Responder (Texto) */
 .btn-reply-text {
   background: none;
   border: none;
@@ -1909,7 +1905,6 @@ margin-top: 4rem; /* Espaço do conteúdo de cima */
 .btn-reply-text:hover {
   color: #fff;
 }
-
 
 .login-prompt {
   background-color: rgba(47, 26, 61, 0.3);
@@ -1942,9 +1937,9 @@ margin-top: 4rem; /* Espaço do conteúdo de cima */
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8); /* Fundo bem escuro */
+  background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(5px);
-  z-index: 3000; /* Acima de tudo */
+  z-index: 3000;
   display: flex;
   align-items: center;
   justify-content: center;
