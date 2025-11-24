@@ -33,7 +33,7 @@ export const authOptions: AuthOptions = {
         if (!isCorrect) {
           throw new Error('Senha incorreta');
         }
-        
+
         return user;
       }
     })
@@ -41,20 +41,30 @@ export const authOptions: AuthOptions = {
   
   secret: process.env.NEXTAUTH_SECRET,
   debug: process.env.NODE_ENV === 'development',
-  session: { strategy: "jwt" },
-  pages: { signIn: '/login' },
 
+  session: {
+    strategy: "jwt",
+  },
+  pages: {
+    signIn: '/login',
+  },
+  
 
   callbacks: {
-
+   
     async jwt({ token, user }) {
         if (user) {
+            token.id = user.id;           
+            token.email = user.email;     
             token.username = user.username;
         }
         return token;
     },
     async session({ session, token }) {
         if (token && session.user) {
+            (session.user as any).id = token.id;
+            (session.user as any).username = token.username;
+            session.user.email = token.email;
             session.user.name = token.username as string;
         }
         return session;
@@ -63,4 +73,5 @@ export const authOptions: AuthOptions = {
 };
 
 const handler = NextAuth(authOptions);
+
 export { handler as GET, handler as POST };
