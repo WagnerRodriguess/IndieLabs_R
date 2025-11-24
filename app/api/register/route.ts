@@ -25,6 +25,14 @@ export async function POST(request: Request) {
       );
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { message: 'Formato de e-mail inválido.' }, 
+        { status: 400 }
+      );
+    }
+
     if (password.length < 6) {
       return NextResponse.json(
         { message: 'A senha deve ter pelo menos 6 caracteres.' }, 

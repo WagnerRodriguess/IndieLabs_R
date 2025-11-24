@@ -23,6 +23,14 @@ export default function ForgotPassword() {
     setMessage('');
     setIsLoading(true);
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    if (!emailRegex.test(email)) {
+      setError('E-mail inválido.');
+      setIsLoading(false);
+      return;
+    }
+
     try {
       const res = await fetch('/api/auth/reset-with-key', {
         method: 'POST',
