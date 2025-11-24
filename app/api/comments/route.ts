@@ -12,38 +12,25 @@ export async function GET(req: Request) {
   if (!slug) return new NextResponse('Slug obrigatório', { status: 400 });
 
   try {
-    const allComments = await prisma.comment.findMany({
-      where: { gameSlug: slug },
-      include: {
-        user: { select: { username: true, image: true } }
+    const comments = await prisma.comment.findMany({
+      where: { 
+        gameSlug: slug,
+        parentId: null 
       },
-      orderBy: { createdAt: 'asc' } 
-    });
-
-    const commentMap = new Map();
-    const rootComments: any[] = [];
-
-    allComments.forEach(comment => {
-      commentMap.set(comment.id, { ...comment, replies: [] });
-    });
-
-    allComments.forEach(comment => {
-      if (comment.parentId) {
-        const parent = commentMap.get(comment.parentId);
-        if (parent) {
-          parent.replies.push(commentMap.get(comment.id));
+      include: {
+        user: { select: { username: true, image: true } }, 
+        replies: { 
+          include: {
+            user: { select: { username: true, image: true } } 
+          },
+          orderBy: { createdAt: 'asc' } 
         }
-      } else {
-        rootComments.push(commentMap.get(comment.id));
-      }
+      },
+      orderBy: { createdAt: 'desc' } 
     });
 
-    rootComments.reverse();
-
-    return NextResponse.json(rootComments);
-
+    return NextResponse.json(comments);
   } catch (error) {
-    console.error(error);
     return new NextResponse('Erro ao buscar comentários', { status: 500 });
   }
 }
@@ -61,11 +48,24 @@ export async function POST(req: Request) {
     const user = await prisma.user.findUnique({ where: { username: session.user.username } });
     if (!user) return new NextResponse('Usuário não encontrado', { status: 404 });
 
+    let finalParentId = parentId;
+
+    if (parentId) {
+      const parentComment = await prisma.comment.findUnique({
+        where: { id: parentId },
+        select: { id: true, parentId: true }
+      });
+
+      if (parentComment && parentComment.parentId) {
+        finalParentId = parentComment.parentId;
+      }
+    }
+
     const newComment = await prisma.comment.create({
       data: {
         content,
         gameSlug,
-        parentId: parentId || null, 
+        parentId: finalParentId || null,
         userId: user.id,
       },
       include: { user: { select: { username: true, image: true } } } 

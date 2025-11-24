@@ -1,4 +1,3 @@
-
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,10 +12,11 @@ const Header = () => {
   const pathname = usePathname();
   const isGamePage = pathname.startsWith('/games/');
   const isSearchPage = pathname.startsWith('/search');
-  const isAuthPage = pathname === '/login' || pathname === '/register';
+  const isAuthPage = pathname === '/login' || pathname === '/register' || pathname === '/change-password';
 
   const showBackButton = isGamePage || isSearchPage || isAuthPage;
   const showSearchBar = !isAuthPage;
+  const showLoggedUser = !isAuthPage;
 
   const { data: session, status } = useSession();
 
@@ -108,11 +108,11 @@ const Header = () => {
 
       <div className="auth-area">
         <div className="user-auth-section">
-          {status === 'loading' && <div className="auth-loading">Carregando...</div>}
-          {status === 'unauthenticated' && !isAuthPage && (
+          {status === 'loading' && showLoggedUser && <div className="auth-loading">Carregando...</div>}
+          {status === 'unauthenticated' && !isAuthPage &&(
             <Link href="/login" className="auth-link-btn login-btn"><LogIn size={18} /> Login</Link>
           )}
-          {status === 'authenticated' && (
+          {status === 'authenticated' && showLoggedUser &&(
             <>
               <div className="auth-welcome"><User size={16} /> Olá, <strong>{session.user.username}</strong></div>
               <button onClick={() => setIsOptionsOpen(true)} className="auth-link-btn options-btn"><Settings size={18} /> Opções</button>
