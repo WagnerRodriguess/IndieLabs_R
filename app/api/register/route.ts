@@ -7,29 +7,45 @@ const prisma = new PrismaClient();
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { username, password } = body;
+    const { username, email, password, recoveryKey } = body;
 
-
-    if (!username || !password) {
-      return new NextResponse('Usuário e senha são obrigatórios', { status: 400 });
+    if (!username || !password || !email || !recoveryKey) {
+      return NextResponse.json(
+        { message: 'Todos os campos são obrigatórios' }, 
+        { status: 400 }
+      );
     }
 
     const cleanUsername = username.trim();
 
     if (!cleanUsername) {
-      return new NextResponse('Nome de usuário inválido.', { status: 400 });
+      return NextResponse.json(
+        { message: 'Nome de usuário inválido.' }, 
+        { status: 400 }
+      );
     }
 
     if (password.length < 6) {
-      return new NextResponse('A senha deve ter pelo menos 6 caracteres.', { status: 400 });
+      return NextResponse.json(
+        { message: 'A senha deve ter pelo menos 6 caracteres.' }, 
+        { status: 400 }
+      );
     }
 
-    const existingUser = await prisma.user.findUnique({
-      where: { username: cleanUsername },
+    const exists = await prisma.user.findFirst({
+      where: { 
+        OR: [
+          { username: username },
+          { email: email }
+        ]
+      }
     });
 
-    if (existingUser) {
-      return new NextResponse('Esse nome de usuário já está em uso', { status: 409 });
+    if (exists) {
+      return NextResponse.json(
+        { message: 'Usuário ou E-mail já cadastrados' }, 
+        { status: 409 }
+      );
     }
     
     const hashedPassword = await bcrypt.hash(password, 12);
@@ -37,7 +53,9 @@ export async function POST(request: Request) {
     const user = await prisma.user.create({
       data: {
         username: cleanUsername,
+        email,
         password: hashedPassword,
+        recoveryKey: recoveryKey,
       },
     });
 
@@ -45,6 +63,9 @@ export async function POST(request: Request) {
 
   } catch (error) {
     console.error('ERRO NO CADASTRO:', error);
-    return new NextResponse('Erro interno do servidor', { status: 500 });
+    return NextResponse.json(
+      { message: 'Erro interno do servidor ao criar conta.' }, 
+      { status: 500 }
+    );
   }
 }

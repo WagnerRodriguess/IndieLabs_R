@@ -12,7 +12,7 @@ const Header = () => {
   const pathname = usePathname();
   const isGamePage = pathname.startsWith('/games/');
   const isSearchPage = pathname.startsWith('/search');
-  const isAuthPage = pathname === '/login' || pathname === '/register' || pathname === '/change-password';
+  const isAuthPage = pathname === '/login' || pathname === '/register' || pathname === '/change-password' || pathname === '/forgot-password'
 
   const showBackButton = isGamePage || isSearchPage || isAuthPage;
   const showSearchBar = !isAuthPage;
