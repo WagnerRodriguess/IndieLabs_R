@@ -114,7 +114,7 @@ const Header = () => {
           )}
           {status === 'authenticated' && showLoggedUser &&(
             <>
-              <div className="auth-welcome"><User size={16} /> Olá, <strong>{session.user.username}</strong></div>
+              <div className="auth-welcome"><User size={16} /> Olá, <strong>{session.user.name}</strong></div>
               <button onClick={() => setIsOptionsOpen(true)} className="auth-link-btn options-btn"><Settings size={18} /> Opções</button>
             </>
           )}
